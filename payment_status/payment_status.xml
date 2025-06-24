@@ -1,24 +1,3 @@
-import { Component } from "@odoo/owl";
-
-export class PaymentScreenStatus extends Component {
-    static template = "point_of_sale.PaymentScreenStatus";
-    static props = {
-        order: Object,
-    };
-
-    get changeText() {
-        return this.env.utils.formatCurrency(this.props.order.get_change());
-    }
-    get remainingText() {
-        const { order_has_zero_remaining, order_remaining, order_sign } =
-            this.props.order.taxTotals;
-        if (order_has_zero_remaining) {
-            return this.env.utils.formatCurrency(0);
-        }
-        return this.env.utils.formatCurrency(order_sign * order_remaining);
-    }
-}
-root@administrator:/opt/odoo18/odoo/addons/point_of_sale/static/src/app/screens/payment_screen/payment_status# cat payment_status.xml
 <?xml version="1.0" encoding="UTF-8"?>
 <templates id="template" xml:space="preserve">
 
