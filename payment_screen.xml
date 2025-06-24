@@ -31,7 +31,7 @@
                     <div class="left-content d-flex flex-column col-md-4 p-2">
                         <t t-call="point_of_sale.PaymentScreenMethods" />
                         <t t-call="point_of_sale.PaymentScreenButtons" />
-                        <Numpad class="'py-2'" buttons="getNumpadButtons()" t-att-class="{'disabled-numpad': selectedPaymentLine?.payment_method?.name === 'QRIS'}"/>
+                        <Numpad t-if="selectedpaymentLine and selectedPaymentLine.payment_method.name !== 'QRIS'" class="'py-2'"  buttons="getNumpadButtons()"/>
                         <div t-attf-class="d-flex flex-row gap-2">
                             <t t-call="point_of_sale.PaymentScreenBack" />
                             <t t-call="point_of_sale.PaymentScreenValidate" />
